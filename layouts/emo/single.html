@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+  {{ if not .Site.Params.disableWebFonts }}
+  <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  {{ end }}
+</head>
+<body>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+  color: #1d1313;
+  text-decoration-skip: ink;
+  box-sizing: border-box;
+}
+
+html { height: 100%; overflow: hidden; }
+
+body {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 17px;
+  height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10px;
+  background-color: #F992E2;
+  background-image:
+    linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000),
+    linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000);
+  background-position: 0 0, 40px 40px;
+  background-size: 80px 80px;
+  background-repeat: repeat;
+}
+
+.win98-window {
+  width: 100%;
+  max-width: 1000px;
+  max-height: calc(100vh - 20px);
+  display: flex;
+  flex-direction: column;
+  background: #ffe6ff;
+  box-shadow:
+    -3px -3px #ffbdf4,
+    3px 3px #8a008a,
+    6px 6px #000000;
+  border: 2px solid #000;
+  border-radius: 4px;
+}
+
+.win98-titlebar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #ff23c6, #ff7be7);
+  padding: 4px 8px;
+  font-size: 14px;
+}
+
+.win98-title {
+  font-family: 'Handjet', monospace;
+  color: #ffffff;
+  text-shadow: 1px 1px #000;
+}
+
+.win98-controls {
+  display: flex;
+  gap: 3px;
+}
+
+.win98-controls .ctrl {
+  position: relative;
+  width: 20px;
+  height: 18px;
+  padding: 0;
+  margin: 0;
+  background: #ffc1ff;
+  border: none;
+  cursor: default;
+  box-shadow:
+    -1px -1px 0 #ffffff,
+    1px 1px 0 #000000;
+}
+
+.win98-controls .ctrl::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 4px;
+  bottom: 4px;
+  border: 1px solid #000;
+}
+
+.win98-controls .btn-min::before {
+  top: auto;
+  height: 3px;
+  border-width: 0 0 1px 0;
+  background: #000;
+}
+
+.win98-controls .btn-max::before {
+  border-width: 1px;
+  background: transparent;
+}
+
+.win98-controls .btn-close::before,
+.win98-controls .btn-close::after {
+  border: none;
+  background: transparent;
+}
+
+.win98-controls .btn-close::after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 5px;
+  width: 2px;
+  height: 8px;
+  background: #000;
+  transform: rotate(45deg);
+}
+
+.win98-controls .btn-close::before {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 5px;
+  width: 2px;
+  height: 8px;
+  background: #000;
+  transform: rotate(-45deg);
+}
+
+.win98-controls .ctrl:hover { background: #ffbfe9; }
+.win98-controls .ctrl:active {
+  box-shadow:
+    1px 1px 0 #ffffff,
+    -1px -1px 0 #b3007d;
+  transform: translate(1px, 1px);
+}
+
+.win98-menubar {
+  display: flex;
+  gap: 18px;
+  padding: 3px 8px 4px;
+  background: #ffd6ff;
+  border-bottom: 1px solid #ff9ae6;
+  font-size: 13px;
+  font-family: 'Handjet', monospace;
+}
+
+.win98-menubar .menu-item {
+  color: #ff2aaf;
+  cursor: default;
+}
+.win98-menubar .menu-item:first-child { text-decoration: underline; }
+
+#sub-header {
+  color: #6b004f;
+  font-size: 12px;
+  padding: 0 8px;
+  background: #ffe6ff;
+  border-bottom: 1px solid #ff9ae6;
+}
+
+.entry-content {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 16px 20px 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.entry-content h1, .entry-content h2, .entry-content h3 {
+  font-family: 'Handjet', monospace;
+  color: #27001f;
+  margin: 20px 0 12px;
+}
+
+.entry-content h1 { font-size: 28px; }
+.entry-content h2 { font-size: 22px; }
+.entry-content h3 { font-size: 18px; }
+
+.entry-content p { margin: 16px 0; line-height: 1.6; }
+.entry-content a { 
+  color: #ff008c; 
+  text-decoration: underline; 
+}
+.entry-content a:hover { text-decoration: none; }
+
+.entry-content table {
+  width: 100%; 
+  border-collapse: collapse; 
+  margin: 20px 0;
+  background: #f8f8f8;
+  box-shadow: inset -1px -1px #ffffff, inset 1px 1px #bfbfbf;
+}
+.entry-content th, .entry-content td { 
+  padding: 8px 12px; 
+  border: 1px solid #bfbfbf; 
+  text-align: left; 
+}
+.entry-content th { 
+  background: linear-gradient(to bottom, #f0f0f0, #dcdcdc); 
+  font-weight: bold; 
+  text-shadow: 1px 1px #ffffff; 
+}
+
+.entry-content blockquote {
+  margin: 24px 0; 
+  padding: 20px;
+  background: linear-gradient(135deg, #ffd6ff, #ffe6ff);
+  border-left: 4px solid #ff23c6;
+  box-shadow: -2px -2px 0 #ffbdf4, 2px 2px 0 #8a008a;
+  font-style: italic;
+}
+
+.entry-content ul, .entry-content ol { 
+  margin: 16px 0; 
+  padding-left: 28px; 
+}
+.entry-content li { 
+  margin: 8px 0; 
+  line-height: 1.5; 
+}
+
+.entry-content code {
+  font: 14px Consolas, monospace; 
+  background: #ffd5ff;
+  padding: 2px 6px; 
+  border-radius: 3px;
+  box-shadow: inset 1px 1px #ffffff, inset -1px -1px #ff9ae6;
+}
+
+.entry-content pre {
+  background: #f8e6ff; 
+  padding: 16px; 
+  margin: 16px 0; 
+  overflow: auto;
+  border: 1px solid #ff9ae6;
+  box-shadow: inset -1px -1px #ffffff, inset 1px 1px #d4d4d4;
+}
+.entry-content pre code { 
+  background: transparent; 
+  padding: 0; 
+  box-shadow: none; 
+}
+
+.entry-content img {
+  max-width: 100%; 
+  height: auto; 
+  margin: 20px auto; 
+  display: block;
+  border: 2px solid #ff9ae6;
+  box-shadow: -2px -2px 0 #ffbdf4, 2px 2px 0 #8a008a;
+  border-radius: 4px;
+}
+
+.entry-content { 
+  scrollbar-color: #ff7be7 #ffd6ff; 
+}
+.entry-content::-webkit-scrollbar { 
+  width: 16px; 
+}
+.entry-content::-webkit-scrollbar-track {
+  background: #ffd6ff;
+  box-shadow: inset -1px -1px 0 #ffffff, inset 1px 1px 0 #b3007d;
+}
+.entry-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff9fe9, #ff7be7);
+  box-shadow: inset -1px -1px 0 #ffffff, inset 1px 1px 0 #b3007d;
+  border: 1px solid #000; 
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 40px 16px;
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+  }
+
+  .win98-window {
+    max-height: calc(100vh - 80px);
+    box-shadow: -2px -2px #ffbdf4, 2px 2px #8a008a, 4px 4px #000;
+    border-radius: 2px;
+  }
+
+  .win98-titlebar { 
+    padding: 3px 6px; 
+    font-size: 13px; 
+  }
+  .win98-controls .ctrl { 
+    width: 18px; 
+    height: 16px; 
+  }
+  .entry-content { 
+    font-size: 15px; 
+    padding: 12px 16px 20px; 
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 30px 12px;
+    background-size: 50px 50px;
+    background-position: 0 0, 25px 25px;
+  }
+
+  .win98-window {
+    max-height: 100vh;
+    min-height: 100vh;
+    box-shadow: -1px -1px #ffbdf4, 1px 1px #8a008a, 2px 2px #000;
+    border-radius: 0;
+    margin: 0;
+  }
+
+  .win98-titlebar { padding: 2px 4px; }
+  .win98-menubar { 
+    font-size: 11px; 
+    gap: 8px; 
+    padding: 1px 4px 2px; 
+  }
+  .win98-controls { gap: 1px; }
+  .win98-controls .ctrl { 
+    width: 16px; 
+    height: 14px; 
+  }
+  .win98-controls .ctrl::before { 
+    left: 3px; 
+    right: 3px; 
+    top: 3px; 
+    bottom: 3px; 
+  }
+
+  .entry-content {
+    font-size: 14px;
+    padding: 8px 10px 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  body {
+    padding: 20px 8px;
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+  }
+
+  .win98-window {
+    box-shadow: none;
+    border-radius: 0;
+  }
+}
+</style>
+
+
+<section id="content" class="win98-window">
+  <div class="win98-titlebar">
+    <span class="win98-title">{{ if .Params.heading }} {{ .Params.heading }} {{ else }} {{ .Title }} {{ end }}</span>
+    <div class="win98-controls">
+      <button class="ctrl btn-min"  aria-label="Minimize"></button>
+      <button class="ctrl btn-max"  aria-label="Maximize"></button>
+      <button class="ctrl btn-close" aria-label="Close"></button>
+    </div>
+  </div>
+
+  <div class="win98-menubar">
+    <span class="menu-item">File</span>
+    <span class="menu-item">Edit</span>
+    <span class="menu-item">View</span>
+    <span class="menu-item">Help</span>
+  </div>
+
+  <div class="entry-content">
+    {{ .Content }}
+  </div>
+</section>
+
+</body>
+</html>

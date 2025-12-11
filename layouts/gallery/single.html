@@ -1,0 +1,25 @@
+{{ partial "header.html" . }}
+
+<section id=content>
+  <h1>{{ if .Params.heading }} {{ .Params.heading }} {{ else }} {{ .Title }} {{ end }}</h1>
+
+  {{ if .Params.date }}
+    <div id=sub-header>
+    {{ .Date.Format (.Site.Params.dateform | default "January 2006") }}
+    </div>
+  {{ end }}
+
+  <div class="entry-content">
+    {{ .Content }}
+  </div>
+
+  {{ with .Resources.ByType "image" }}
+      {{ range . }}
+        {{ $thumb := .Resize "1000x" }}
+        <img src="{{ $thumb.RelPermalink }}" alt="{{ .Title }}">
+      {{ end }}
+  {{ end }}
+
+</section>
+
+{{ partial "footer.html" . }}

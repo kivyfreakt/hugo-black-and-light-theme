@@ -1,18 +1,70 @@
 {{ partial "header.html" . }}
 
-<section id=content>
+
+{{ if or .Site.Params.homeIntroTitle .Site.Params.homeIntroContent }}
+<section id="intro">
+    {{ with .Site.Params.homeIntroTitle }}
+    <h1>{{ . }}</h1>
+    {{ end }}
+
+    {{ with .Site.Params.homeIntroContent }}
+    <p>{{ . | markdownify }}</p>
+    {{ end }}
+</section>
+{{ end }}
+
+{{ with site.Params.social }}
+<section id="social-icons">
+    {{- range . }}
+    <a href="{{ trim .url " " | safeURL }}" target="_blank"
+        rel="noopener noreferrer me"
+        title="{{ (.title | default .name) | title }}">
+        {{ partial "svg.html" . }}
+    </a>
+    {{- end }}
+</section>
+{{ end }}
+
+<section class="content">
+  {{ with .Site.Params.homePostsTitle }}
+  <h1>{{ . }}</h1>
+  {{ end }}
+  
+  {{ with .Site.GetPage "/posts" }}
   <ul class=posts_listing>
-    {{ range .Site.RegularPages }}
+     {{ range first (.Site.Params.homePostsCount | default 5) (sort .Pages "Date" "desc")}}
       <li>
         <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
         <div class=date>
           {{if not .Date.IsZero }}
-            {{ .Date.Format (.Site.Params.dateform | default "January 2006") }}
+            {{ .Date.Format (.Site.Params.dateform | default "01 January 2006") }}
           {{end}}
         </div>
       </li>
     {{ end }}
   </ul>
+  {{ end }}
+</section>
+
+<section class="content" id="content-photo">
+  {{ with .Site.Params.homePhotoTitle }}
+  <h1>{{ . }}</h1>
+  {{ end }}
+
+  <div class = "image-grid">
+  {{ with .Site.GetPage "/photos" }}
+    {{ range first 3 (sort .Pages "Date" "desc")}}
+        <a href="{{ .Permalink }}" title="{{ .Title }}" class="grid-item">
+        {{ $image := .Page.Resources.GetMatch .Params.image }}
+        {{ with $image }}
+            {{ $thumb := .Resize "400x" }}
+            <img src="{{ $thumb.RelPermalink }}" alt="{{ .Title }}">
+        {{end}}
+        </a>
+    {{ end }}
+  {{ end }}
+ </div>
+
 </section>
 
 {{ partial "footer.html" . }}

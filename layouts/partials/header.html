@@ -8,8 +8,10 @@
     <meta name="referrer" content="no-referrer">
     <meta name="description" content="{{ .Description | default .Site.Params.Description }}">
 
+    <link rel="stylesheet" href="/css/style.css">
     {{ if not .Site.Params.disableWebFonts }}
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:400|Old+Standard+TT:400&display=swap" rel="stylesheet" media="print" type="text/css" onload="this.media='all'">
+      <link href="/font/BeckettRus.woff2" as="font" type="font/woff2" crossorigin>
     {{ end }}
 
     <title>
@@ -21,8 +23,6 @@
       {{ end }}
     </title>
     <link rel="canonical" href="{{ .Permalink }}">
-
-    {{ partial "styles.html" . }}
 
     {{ range .AlternativeOutputFormats -}}
         {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
