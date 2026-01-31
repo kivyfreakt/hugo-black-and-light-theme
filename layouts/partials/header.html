@@ -8,6 +8,10 @@
     <meta name="referrer" content="no-referrer">
     <meta name="description" content="{{ .Description | default .Site.Params.Description }}">
 
+    <meta property="og:site_name" content="{{ .Site.Title }}">
+    <meta property="telegram:channel" content="@musicfreakt">
+    <meta property="tg:site_verification" content="g7j8/rPFXfhyrq5q0QQV7EsYWv4=">
+
     <link rel="stylesheet" href="/css/style.css">
     {{ if not .Site.Params.disableWebFonts }}
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:400|Old+Standard+TT:400&display=swap" rel="stylesheet" media="print" type="text/css" onload="this.media='all'">
