@@ -1,6 +1,6 @@
 {{ partial "header.html" . }}
 
-<section id=content class="article">
+<div id="content" class="article">
   <article class="article__content">
     <h1>{{ if .Params.heading }} {{ .Params.heading }} {{ else }} {{ .Title }} {{ end }}</h1>
 
@@ -23,6 +23,6 @@
       <a href="{{.NextInSection.Permalink}}">{{.NextInSection.Title}}&nbsp;&raquo;</a>
     {{ end }}
   </div>
-</section>
+</div>
 
 {{ partial "footer.html" . }}
