@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
   <head>
-      <title>
+    <meta charset="utf-8">
+    <title>
       {{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }}
       {{ if eq $url "/" }}
         {{ .Site.Title }}
@@ -10,20 +11,19 @@
       {{ end }}
     </title>
     
-    <meta charset="utf-8">
+    <meta property="og:site_name" content="{{ .Site.Title }}">
+    <meta property="og:description" content="{{ .Description | default .Site.Params.Description }}">
+    <meta property="article:author" content="kivyfreakt">
+     <!-- <meta property="og:image" content="http://example.com/img.jpeg"> -->
+    <meta property="telegram:channel" content="@musicfreakt">
+    <meta property="tg:site_verification" content="g7j8/rPFXfhyrq5q0QQV7EsYWv4=">
+    <meta property="article:published_time" content="">
+
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer">
     <meta name="description" content="{{ .Description | default .Site.Params.Description }}">
-
-    <meta property="og:site_name" content="{{ .Site.Title }}">
-    <meta property="telegram:channel" content="@musicfreakt">
-    <meta property="og:description" content="{{ .Description | default .Site.Params.Description }}">
-    <meta property="article:author" content="kivyfreakt">
-    <meta property="tg:site_verification" content="g7j8/rPFXfhyrq5q0QQV7EsYWv4=">
-    <meta property="article:published_time" content="">
-
 
     <link rel="stylesheet" href="/css/style.css">
     {{ if not .Site.Params.disableWebFonts }}
