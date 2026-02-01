@@ -1,15 +1,14 @@
 {{ partial "header.html" . }}
 
-<div id="content" class="article">
-  <article class="article__content">
-    <h1>{{ if .Params.heading }} {{ .Params.heading }} {{ else }} {{ .Title }} {{ end }}</h1>
+<div class="article">
+  <h1>{{ if .Params.heading }} {{ .Params.heading }} {{ else }} {{ .Title }} {{ end }}</h1>
 
     {{ if .Params.date }}
       <div id=sub-header>
         {{ .Date.Format (.Site.Params.dateform | default "January 2006") }} · {{ .ReadingTime }} minute read
       </div>
     {{ end }}
-
+  <article class="article__content">
     <div class="entry-content">
       {{ .Content }}
     </div>
