@@ -168,10 +168,6 @@
     font-size:13px;
   }
 
-  #sub-header {
-    margin: 0 4px;
-  }
-
   @font-face {
     font-family: 'Beckett Rus';
     src: url('/font/BeckettRus.woff2') format('woff2');
@@ -238,23 +234,19 @@
     padding: 0;
   }
 
-  .content h1,.content h2 {
+  .main-header,.sub-header {
     margin-bottom:5px;
   }
 
-  .content h2 {
+  .sub-header {
     font-size:25px;
-  }
-
-  .content .entry-content {
-    margin-top:15px;
   }
 
   .content .date {
     margin-left:3px;
   }
 
-  .content h1 {
+  .main-header {
     font-size:30px;
   }
 
@@ -356,15 +348,14 @@
 
     .content {
       margin-top:0;
-      padding-top:50px;
       font-size:14px;
     }
 
-    .content h1 {
+    .main-header {
       font-size:25px;
     }
 
-    .content h2 {
+    .sub-header {
       font-size:22px;
     }
 
@@ -397,15 +388,14 @@
 
     .content {
       margin-top:0;
-      padding-top:20px;
       font-size:12px;
     }
 
-    .content h1 {
+    .main-header {
       font-size:20px;
     }
 
-    .content h2 {
+    .sub-header {
       font-size:18px;
     }
 
