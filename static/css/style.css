@@ -168,10 +168,6 @@
     font-size:13px;
   }
 
-  .sub-header {
-    margin: 0 4px;
-  }
-
   @font-face {
     font-family: 'Beckett Rus';
     src: url('/font/BeckettRus.woff2') format('woff2');
@@ -238,12 +234,8 @@
     padding: 0;
   }
 
-  .content h1,.sub-header{
+  .main-header,.sub-header{
     margin-bottom:5px;
-  }
-
-  .sub-header{
-    font-size:25px;
   }
 
   .content .date {
@@ -352,16 +344,11 @@
 
     .content {
       margin-top:0;
-      padding-top:50px;
       font-size:14px;
     }
 
     .main-header{
       font-size:25px;
-    }
-
-    .sub-header{
-      font-size:22px;
     }
 
     .posts_listing li div {
@@ -393,16 +380,11 @@
 
     .content {
       margin-top:0;
-      padding-top:20px;
       font-size:12px;
     }
 
     .main-header{
       font-size:20px;
-    }
-
-    .sub-header{
-      font-size:18px;
     }
 
     .posts_listing li div{
