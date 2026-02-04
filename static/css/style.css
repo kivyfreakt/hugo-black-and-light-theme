@@ -163,12 +163,12 @@
     margin-top:28px;
   }
 
-  #sub-header, .date {
+  .sub-header, .date {
     color:#403c3b;
     font-size:13px;
   }
 
-  #sub-header {
+  .sub-header {
     margin: 0 4px;
   }
 
@@ -423,7 +423,7 @@
       background-color: #262626;
     }
 
-    #sub-header, .date {
+    .sub-header, .date {
       color: #BABABA;
     }
 
