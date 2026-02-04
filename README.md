@@ -2,6 +2,9 @@
 
 A High contrast, text oriented, performant and Javascript-free theme for Hugo.
 
+## CHANGES:
+* Add support for telegram instant view feature
+
 ## Features
 * Loads in a single request (with web-fonts disabled).
 * 100 / 100 on Google Page Speed test (100 / 100 on mobile with web-fonts disabled).
@@ -24,4 +27,4 @@ For more information read the official [setup guide](//gohugo.io/overview/instal
 Copy the [`config.toml`](//github.com/davidhampgonsalves/hugo-black-and-light-theme/blob/master/exampleSite/config.toml) from this themes exampleSite to your Hugo site or use it as a reference.
 
 ## License
-This theme is released under the GPL 3.0 license. For more information read the [license](https://raw.githubusercontent.com/davidhampgonsalves/hugo-black-and-light-theme/master/LICENSE).
+This theme is released under the GPL 3.0 license. For more information read the [license](https://raw.githubusercontent.com/davidhampgonsalves/hugo-black-and-light-theme/master/LICENSE).
