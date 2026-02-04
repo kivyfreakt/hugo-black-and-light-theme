@@ -238,23 +238,19 @@
     padding: 0;
   }
 
-  .content h1,.content h2 {
+  .content h1,.sub-header{
     margin-bottom:5px;
   }
 
-  .content h2 {
+  .sub-header{
     font-size:25px;
-  }
-
-  .content .entry-content {
-    margin-top:15px;
   }
 
   .content .date {
     margin-left:3px;
   }
 
-  .content h1 {
+  .main-header{
     font-size:30px;
   }
 
@@ -360,11 +356,11 @@
       font-size:14px;
     }
 
-    .content h1 {
+    .main-header{
       font-size:25px;
     }
 
-    .content h2 {
+    .sub-header{
       font-size:22px;
     }
 
@@ -401,11 +397,11 @@
       font-size:12px;
     }
 
-    .content h1 {
+    .main-header{
       font-size:20px;
     }
 
-    .content h2 {
+    .sub-header{
       font-size:18px;
     }
 
