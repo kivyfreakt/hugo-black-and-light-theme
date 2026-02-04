@@ -235,7 +235,7 @@
     text-align:left;
     width:100%;
     font-size:15px;
-    padding:25px 0 0 0;
+    padding: 0;
   }
 
   .content h1,.content h2 {
@@ -269,8 +269,6 @@
   .posts_listing li a:hover,#nav a:hover {
     text-decoration: underline;
   }
-
-  
 
   #nav {
     text-align:center;
